@@ -1,4 +1,7 @@
-![Logo](images/logo.jpg)
+<p align="center" width="100%">
+    <img width="20%" src="images/logo.jpg"> 
+</p>
+
 # PiLAMP
 PiLAMP is an Ansible project designed to automate the deployment of a LAMP stack (**Linux**, **Apache**, **MySQL**, and **PHP**) on a target infrastructure. It includes configuration files and playbooks to enable easy and efficient setup.
 
@@ -30,7 +33,7 @@ PiLAMP is an Ansible project designed to automate the deployment of a LAMP stack
    ```
 
 ## Project Structure
-
+```
 PiLAMP/
 ├── .gitignore                  # Git ignore file
 ├── README.md                   # Project documentation
@@ -70,3 +73,4 @@ PiLAMP/
 │   │           │   ├── logrotate-apache.j2
 │   │           │   ├── vhost.j2
 │   │           │   └── vhost_adminer.j2
+```
