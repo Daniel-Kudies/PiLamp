@@ -1,0 +1,35 @@
+---
+- name: Install mandatory Packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ php_prepare_packages }}"
+
+- name: Add GPG-Key for Sury PHP Repository
+  shell: curl -sSL https://packages.sury.org/php/apt.gpg | sudo gpg --dearmor -o /usr/share/keyrings/sury-php.gpg
+  args:
+    creates: /usr/share/keyrings/sury-php.gpg
+
+- name: Aktualisiere Paketquellen
+  apt:
+    update_cache: yes
+
+- name: Add Sury Php Repository
+  lineinfile:
+    path: /etc/apt/sources.list.d/sury-php.list
+    line: "deb [signed-by=/usr/share/keyrings/sury-php.gpg] https://packages.sury.org/php {{ ansible_lsb.codename }} main"
+    create: yes
+
+- name: Install PHP
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ php_packages }}"
+
+- name: Check PHP version
+  command: php -v
+  register: php_version_output
+
+- name: Display PHP version
+  debug:
+    msg: "Installed PHP version: {{ php_version_output.stdout }}"

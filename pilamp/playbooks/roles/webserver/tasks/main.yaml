@@ -1,0 +1,39 @@
+---
+- name: Erstellen der Logverzeichnisse
+  ansible.builtin.file:
+    path: "{{ opt_path }}/{{ item }}"
+    state: directory
+    mode: "0750"
+    owner: "{{ webserver_user }}"
+    group: "{{ default_system_user }}"
+  loop: "{{ log_directories }}"
+
+- name: Erstellen von Verzeichnis Adminer
+  ansible.builtin.file:
+    path: "{{ adminer_configuration_root }}"
+    state: directory
+    mode: "0750"
+    owner: "{{ webserver_user }}"
+    group: "{{ default_system_user }}"
+
+- name: Run Tasks to Install the Webserver
+  ansible.builtin.include_tasks: webserver.yaml
+
+- name: Run Tasks to Install Adminer
+  ansible.builtin.include_tasks: adminer.yaml
+
+- name: Hosts-Datei aus Template erstellen
+  vars:
+    hosts:
+      - { ip: '192.168.1.10', name: 'TestPi' }
+      - { ip: '192.168.1.20', name: 'TestPi.adminer' }
+  template:
+    src: "hosts.j2"
+    dest: "/etc/hosts"
+  notify:
+    - Restart Networkservice
+
+- name: Setzen von Logrotate
+  ansible.builtin.template:
+    src: logrotate-apache.j2
+    dest: "{{ logrotate_directory }}"

@@ -1,0 +1,25 @@
+---
+- name: Start Webserver
+  ansible.builtin.service:
+    name: "{{ webserver_service_name }}"
+    state: start
+
+- name: Stop Webserver
+  ansible.builtin.service:
+    name: "{{ webserver_service_name }}"
+    state: stop
+
+- name: Reload Webserver
+  ansible.builtin.service:
+    name: "{{ webserver_service_name }}"
+    state: reloaded
+
+- name: Restart Webserver
+  ansible.builtin.service:
+    name: "{{ webserver_service_name }}"
+    state: restarted
+
+- name: Restart Networkservice
+  ansible.builtin.systemd:
+    name: networking
+    state: restarted

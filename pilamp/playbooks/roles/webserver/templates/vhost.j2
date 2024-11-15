@@ -1,0 +1,18 @@
+<VirtualHost *:{{ webserver_port }}>
+    ServerName {{ webserver_server_name }}
+    ServerSignature {{ webserver_signature }}
+    DocumentRoot {{ webserver_document_root }}
+
+    <Location "/adminer">
+        Require all denied
+    </Location>
+
+    <Directory "{{ webserver_document_root }}">
+        Options None
+        AllowOverride {{ webserver_allow_override }}
+        Require all granted
+    </Directory>
+
+    ErrorLog "{{ webserver_logs }}/error_{{ webserver_server_name }}.log"
+    CustomLog "{{ webserver_logs }}/access_{{ webserver_server_name }}.log" combined
+</VirtualHost>

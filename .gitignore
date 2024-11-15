@@ -6,8 +6,11 @@
 *.swo
 
 # Python
+venv/
+.env/
 __pycache__/
 *.py[cod]
+*.pyo
 
 # Ansible
 *.retry
@@ -21,6 +24,11 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# SSH keys and sensitive data
+*.pem
+*.key
+*.crt
 
 # Backup Files
 *.~*

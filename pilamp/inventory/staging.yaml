@@ -1,0 +1,8 @@
+webservers:
+  hosts:
+    PiTest:
+      ansible_host: TestPi
+databaseservers:
+  hosts:
+    PiTest:
+      ansible_host: TestPi

@@ -1,0 +1,19 @@
+{{ webserver_logs }}/error_{{ webserver_server_name }}.log {
+    daily
+    missingok
+    rotate 7
+    compress
+    nodelaycompress
+    notifempty
+    create 0740 {{ webserver_user }} {{ default_system_user }}
+}
+
+{{ webserver_logs }}/access_{{ webserver_server_name }}.log {
+    daily
+    missingok
+    rotate 7
+    compress
+    nodelaycompress
+    notifempty
+    create 0740 {{ webserver_user }} {{ default_system_user }}
+}

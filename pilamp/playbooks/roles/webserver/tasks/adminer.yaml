@@ -1,0 +1,20 @@
+---
+- name: Download Adminer
+  get_url:
+    url: "{{ adminer_url }}"
+    dest: "{{ adminer_configuration_root }}/adminer.php"
+    mode: "0644"
+
+- name: Set permissions for Adminer
+  file:
+    path: /var/www/html/adminer/adminer.php
+    owner: "{{ webserver_user }}"
+    group: "{{ default_system_user }}"
+    mode: "0644"
+
+- name: Setze die Adminer-Port-Konfiguration
+  ansible.builtin.template:
+    src: vhost_adminer.j2
+    dest: "{{ webserver_configuration_root }}/sites-available/adminer.conf"
+  notify:
+    - Restart Webserver

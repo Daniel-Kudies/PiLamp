@@ -1,0 +1,9 @@
+- name: Set up databaseserver
+  hosts: databaseservers
+  remote_user: pi
+  become: true
+  vars_files:
+    - ../inventory/group_vars/default_vars.yaml
+    - ../inventory/group_vars/database.yaml
+  roles:
+    - database

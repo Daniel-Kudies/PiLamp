@@ -1,0 +1,22 @@
+---
+- name: Installiere Webserver
+  ansible.builtin.package:
+    name: "{{ webserver_package }}"
+    state: present
+
+- name: Stelle sicher, dass der Webserver-Dienst gestartet und aktiviert ist
+  ansible.builtin.service:
+    name: "{{ webserver_package }}"
+    enabled: "{{ webserver_enable }}"
+    state: "{{ webserver_state }}"
+
+- name: Setze die Webserver-Port-Konfiguration
+  ansible.builtin.template:
+    src: vhost.j2
+    dest: "{{ webserver_configuration_root }}/sites-available/000-default.conf"
+
+- name: Setze die Webserver index.html
+  ansible.builtin.copy:
+    src: files/index.html
+    dest: "{{ webserver_document_root }}/index.html"
+  notify: Reload Webserver

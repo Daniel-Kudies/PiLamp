@@ -1,0 +1,29 @@
+---
+- name: Set up PHP
+  hosts: webservers
+  become: true
+  vars_files:
+    - ../inventory/group_vars/php.yaml
+  roles:
+    - php
+
+- name: Set up webserver
+  hosts: webservers
+  remote_user: pi
+  become: true
+  vars_files:
+    - ../inventory/group_vars/default_vars.yaml
+    - ../inventory/group_vars/webserver.yaml
+    - ../inventory/group_vars/adminer.yaml
+  roles:
+    - webserver
+
+- name: Set up databaseserver
+  hosts: databaseservers
+  remote_user: pi
+  become: true
+  vars_files:
+    - ../inventory/group_vars/default_vars.yaml
+    - ../inventory/group_vars/database.yaml
+  roles:
+    - database

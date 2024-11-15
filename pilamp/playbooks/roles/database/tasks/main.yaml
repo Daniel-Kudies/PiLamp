@@ -1,0 +1,11 @@
+---
+- name: Installiere Datenbankserver
+  ansible.builtin.package:
+    name: "{{ database_package }}"
+    state: present
+
+- name: Stelle sicher, dass der Datenbankserver-Dienst gestartet und aktiviert ist
+  ansible.builtin.service:
+    name: "{{ database_service_name }}"
+    enabled: "{{ database_enable }}"
+    state: "{{ database_state }}"

@@ -1,0 +1,10 @@
+- name: Set up webserver
+  hosts: webservers
+  remote_user: pi
+  become: true
+  vars_files:
+    - ../inventory/group_vars/default_vars.yaml
+    - ../inventory/group_vars/webserver.yaml
+    - ../inventory/group_vars/adminer.yaml
+  roles:
+    - webserver

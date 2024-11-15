@@ -1,0 +1,15 @@
+<VirtualHost *:{{ adminer_port }}>
+    ServerName {{ webserver_server_name }}.adminer
+    ServerSignature {{ webserver_signature }}
+    DocumentRoot {{ adminer_configuration_root }}
+
+    <Directory {{ adminer_configuration_root }}>
+        Options None
+        AllowOverride None
+        Require all granted
+        DirectoryIndex adminer.php
+    </Directory>
+
+    ErrorLog {{ webserver_logs }}/error_{{ adminer_package }}.log
+    CustomLog {{ webserver_logs }}/access_{{ adminer_package }}.log combined
+</VirtualHost>

@@ -1,0 +1,16 @@
+php_version: "7.4"
+php_packages:
+  - "php{{ php_version }}"
+  - "php{{ php_version }}-cli"
+  - "php{{ php_version }}-fpm"
+  - "libapache2-mod-php{{ php_version }}"
+  - "php{{ php_version }}-mysql"
+  - "php{{ php_version }}-xml"
+  - "php{{ php_version }}-curl"
+  - "php{{ php_version }}-mbstring"
+
+php_prepare_packages:
+  - apt-transport-https
+  - lsb-release
+  - ca-certificates
+  - curl

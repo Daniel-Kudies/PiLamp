@@ -1,0 +1,22 @@
+# Paketname und Name für den Webserver
+webserver_package: "apache2"
+webserver_service_name: "apache2"
+
+# Webserverbenutzer und Gruppe
+webserver_user: "www-data"
+webserver_group: "www-data"
+
+# Pfade zu Root-Verzeichnissen
+webserver_document_root: "/var/www/html"
+webserver_configuration_root: "/etc/{{ webserver_package }}"
+
+# Einstellungen für vhost.j2
+webserver_port: 80
+webserver_server_name: TestPi
+webserver_signature: "Off"
+webserver_logs: "/opt/logs"
+webserver_allow_override: "None"
+
+# Status des Webserver-Dienstes (ob er aktiviert und gestartet werden soll)
+webserver_enable: true
+webserver_state: "started"

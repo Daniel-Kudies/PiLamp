@@ -1,0 +1,23 @@
+# Paketname und Name für die Datenbank
+database_package: mariadb-server
+database_service_name: mysql
+
+# Datenbankbenutzer und Gruppe
+database_user: "mysql"
+database_group: "mysql"
+
+# Pfade zu Root-Verzeichnissen
+database_configuration_root: "/etc/{{ database_package }}"
+
+# Status des Datenbank-Dienstes (ob er aktiviert und gestartet werden soll)
+database_enable: true
+database_state: "started"
+
+# Datenbank-Zugangsdaten und -Einstellungen
+database_root_password: "root_password" # TODO: Auslagern in Vaults
+database_user_name: "myuser" # TODO: Auslagern in Vaults
+database_user_password: "user_password" # TODO: Auslagern in Vaults
+database_database_name: "mydatabase" # TODO: Auslagern in Vaults
+
+database_post_install: true
+database_secure_installation: true

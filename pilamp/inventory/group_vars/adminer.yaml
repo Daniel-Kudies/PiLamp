@@ -1,0 +1,9 @@
+# Paketname und Name für die Datenbanksverwaltungsoberfläche
+adminer_package: adminer
+adminer_service_name:
+
+adminer_url: https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php
+adminer_port: 81
+
+# Pfade zu Root-Verzeichnissen
+adminer_configuration_root: "/var/www/html/adminer"

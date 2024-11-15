@@ -1,0 +1,7 @@
+opt_path: "/opt"
+default_system_user: "pi"
+logrotate_directory: "/etc/logrotate.d"
+log_directories:
+  - logs
+  - certificate
+  - transfer

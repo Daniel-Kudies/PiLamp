@@ -1,0 +1,20 @@
+---
+- name: Start Database
+  ansible.builtin.service:
+    name: "{{ database_service_name }}"
+    state: start
+
+- name: Stop Database
+  ansible.builtin.service:
+    name: "{{ database_service_name }}"
+    state: stop
+
+- name: Reload Database
+  ansible.builtin.service:
+    name: "{{ database_service_name }}"
+    state: reloaded
+
+- name: Restart Database
+  ansible.builtin.service:
+    name: "{{ database_service_name }}"
+    state: restarted
