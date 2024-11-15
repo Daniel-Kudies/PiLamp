@@ -1,0 +1,46 @@
+# General
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Ansible
+*.retry
+*.vault
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup Files
+*.~*
+*~
+
+# Logs and Debugging Files
+debug.log
+logs/
+
+# Sensitive Files (Adjust based on your project's needs)
+inventory/*_vault.yaml
+inventory/*_vault.json
+
+# Ignore binary or temporary files
+*.out
+*.bin
+*.lock
+*.tar.gz
+*.zip
+
+# Ignore generated HTML or other temporary build files
+build/
+dist/
